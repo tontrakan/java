@@ -174,16 +174,11 @@ public class login extends javax.swing.JFrame {
         else{
             String sql = "select username,password,userLevel from mydb.emp where  username=? and password=? and userLevel=?  ";
             try {
-                int count =0;
-                //String Eid =""; 
-                
+                int count =0; 
                 pre=connects.prepareStatement(sql);
-                //pre.setString(1, Eid);
                 pre.setString(1, username.getText());
                 pre.setString(2, password.getText());
                 pre.setString(3, selectlevel.getSelectedItem().toString());
-                //pre.setString(4, Eid);
-                
                 res=pre.executeQuery();
                 
                 while(res.next()){
@@ -197,7 +192,6 @@ public class login extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "success");
                        MainMenu main = new MainMenu();
                        main.setVisible(true);
-                       //this.dispose();
                        Date date = GregorianCalendar
                                .getInstance().getTime();
                        DateFormat format = DateFormat.getDateInstance();
@@ -210,7 +204,6 @@ public class login extends javax.swing.JFrame {
                        String auditdate=dateE;
                        String audittime=timeSt;
                        String statusC= "login";
-                       //String sqlid = "select idemp from mydb.emp where idemp=? ";
                        String eid=connection.Emp.username;
                        String sqlogin="insert into mydb.audit (idemp,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
                        
@@ -227,6 +220,37 @@ public class login extends javax.swing.JFrame {
                        JOptionPane.showMessageDialog(null,
                        "Username and Password is not correct");
                    }  
+                }
+                else if (access=="user"){
+                    if(count==1){
+                        JOptionPane.showMessageDialog(null, "success");
+                       MainMenu main = new MainMenu();
+                       main.setVisible(true);
+                       Date date = GregorianCalendar
+                               .getInstance().getTime();
+                       DateFormat format = DateFormat.getDateInstance();
+                       String dateE = format.format(date);
+                       Date d= new Date();
+                       SimpleDateFormat time = 
+                               new SimpleDateFormat("HH:mm:ss");
+                       String timeSt = time.format(d);
+                       
+                       String auditdate=dateE;
+                       String audittime=timeSt;
+                       String statusC= "login";
+                       String eid=connection.Emp.username;
+                       String sqlogin="insert into mydb.audit (idemp,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                       
+                       pre=connects.prepareStatement(sqlogin);
+                       pre.execute();
+                       this.dispose();
+                    }
+                    
+                    else{
+                       JOptionPane.showMessageDialog(null,
+                       "Username and Password is not correct");
+                   }
+                    
                 }
                 
                 
@@ -252,6 +276,113 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_cmd_LoginKeyPressed
 
     private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
+        
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(username.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "username must not empty");
+        }
+        else if(password.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "password must not empty");
+        }
+        else{
+            String sql = "select username,password,userLevel from mydb.emp where  username=? and password=? and userLevel=?  ";
+            try {
+                int count =0; 
+                pre=connects.prepareStatement(sql);
+                pre.setString(1, username.getText());
+                pre.setString(2, password.getText());
+                pre.setString(3, selectlevel.getSelectedItem().toString());
+                res=pre.executeQuery();
+                
+                while(res.next()){
+                    String user = res.getString(1);
+                    connection.Emp.username=user;
+                    count=count+1;
+                }
+                String access=(selectlevel.getSelectedItem().toString());
+                if(access=="Admin"){
+                    if(count==1){
+                        JOptionPane.showMessageDialog(null, "success");
+                       MainMenu main = new MainMenu();
+                       main.setVisible(true);
+                       Date date = GregorianCalendar
+                               .getInstance().getTime();
+                       DateFormat format = DateFormat.getDateInstance();
+                       String dateE = format.format(date);
+                       Date d= new Date();
+                       SimpleDateFormat time = 
+                               new SimpleDateFormat("HH:mm:ss");
+                       String timeSt = time.format(d);
+                       
+                       String auditdate=dateE;
+                       String audittime=timeSt;
+                       String statusC= "login";
+                       String eid=connection.Emp.username;
+                       String sqlogin="insert into mydb.audit (idemp,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                       
+                       pre=connects.prepareStatement(sqlogin);
+                       pre.execute();
+                       this.dispose();
+                    }
+                    else if(count>1){
+                       JOptionPane.showMessageDialog(null,"Duplicate Username "
+                               + "or Password Access denied" );
+                       
+                   }
+                   else{
+                       JOptionPane.showMessageDialog(null,
+                       "Username and Password is not correct");
+                   }  
+                }
+                else if (access=="user"){
+                    if(count==1){
+                        JOptionPane.showMessageDialog(null, "success");
+                       MainMenu main = new MainMenu();
+                       main.setVisible(true);
+                       Date date = GregorianCalendar
+                               .getInstance().getTime();
+                       DateFormat format = DateFormat.getDateInstance();
+                       String dateE = format.format(date);
+                       Date d= new Date();
+                       SimpleDateFormat time = 
+                               new SimpleDateFormat("HH:mm:ss");
+                       String timeSt = time.format(d);
+                       
+                       String auditdate=dateE;
+                       String audittime=timeSt;
+                       String statusC= "login";
+                       String eid=connection.Emp.username;
+                       String sqlogin="insert into mydb.audit (idemp,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                       
+                       pre=connects.prepareStatement(sqlogin);
+                       pre.execute();
+                       this.dispose();
+                    }
+                    
+                    else{
+                       JOptionPane.showMessageDialog(null,
+                       "Username and Password is not correct");
+                   }
+                    
+                }
+                
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+            finally {
+            
+            try{
+                res.close();
+                pre.close(); 
+                setVisible(false);
+            }
+            catch(Exception e){               
+            }
+          } 
+        } 
+         }
+        
         
     }//GEN-LAST:event_passwordKeyPressed
 
