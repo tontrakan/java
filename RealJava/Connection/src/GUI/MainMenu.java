@@ -33,6 +33,8 @@ public class MainMenu extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, 
         size.height/2 - getHeight()/2);
+        
+        loginuser.setText(String.valueOf(connection.Emp.username).toString());
     }
 
     
@@ -64,19 +66,25 @@ public class MainMenu extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(520, 350));
+        setMinimumSize(new java.awt.Dimension(520, 350));
+        setPreferredSize(new java.awt.Dimension(520, 350));
         setResizable(false);
         getContentPane().setLayout(null);
 
+        jPanel2.setMaximumSize(new java.awt.Dimension(600, 290));
+        jPanel2.setMinimumSize(new java.awt.Dimension(600, 290));
         jPanel2.setLayout(null);
 
         exit.setBackground(new java.awt.Color(255, 255, 255));
+        exit.setText("Logout");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
             }
         });
         jPanel2.add(exit);
-        exit.setBounds(520, 10, 40, 30);
+        exit.setBounds(220, 220, 90, 50);
 
         payment.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         payment.setText("Payment");
@@ -86,7 +94,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(payment);
-        payment.setBounds(270, 170, 197, 23);
+        payment.setBounds(270, 170, 197, 31);
 
         deduction.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         deduction.setText("Deduction");
@@ -96,7 +104,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(deduction);
-        deduction.setBounds(50, 170, 197, 23);
+        deduction.setBounds(50, 170, 197, 31);
 
         allowance.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         allowance.setText("Allowance");
@@ -106,7 +114,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(allowance);
-        allowance.setBounds(50, 110, 197, 23);
+        allowance.setBounds(50, 110, 197, 31);
 
         emp_manager.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         emp_manager.setText("Employee Manager");
@@ -116,7 +124,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(emp_manager);
-        emp_manager.setBounds(50, 50, 197, 23);
+        emp_manager.setBounds(50, 50, 197, 31);
 
         search.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         search.setText("Search");
@@ -126,7 +134,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(search);
-        search.setBounds(270, 50, 197, 23);
+        search.setBounds(270, 50, 197, 31);
 
         update_salary.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         update_salary.setText("Update Salary");
@@ -136,20 +144,20 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(update_salary);
-        update_salary.setBounds(270, 110, 197, 23);
+        update_salary.setBounds(270, 110, 197, 31);
 
         jLabel2.setText("Login As:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(430, 220, 70, 18);
+        jLabel2.setBounds(20, 10, 70, 18);
 
         loginuser.setMaximumSize(new java.awt.Dimension(44, 14));
         loginuser.setMinimumSize(new java.awt.Dimension(44, 14));
         loginuser.setPreferredSize(new java.awt.Dimension(44, 14));
         jPanel2.add(loginuser);
-        loginuser.setBounds(500, 220, 70, 14);
+        loginuser.setBounds(90, 10, 90, 20);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 600, 260);
+        jPanel2.setBounds(0, 0, 520, 280);
 
         employee.setText("Employee");
 
@@ -253,7 +261,45 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_audit_trailActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        
+            login out = new login();
+            out.setVisible(true);
+            this.dispose();
+            try {
+            
+                Date date = GregorianCalendar
+                               .getInstance().getTime();
+                       DateFormat format = DateFormat.getDateInstance();
+                       String dateE = format.format(date);
+                       Date d= new Date();
+                       SimpleDateFormat time = 
+                               new SimpleDateFormat("HH:mm:ss");
+                       String timeSt = time.format(d);
+                       
+                       String auditdate=dateE;
+                       String audittime=timeSt;
+                       String statusC= "logout";
+                       String eid=connection.Emp.username;
+                       String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                       
+                       pre=connects.prepareStatement(sqlogin);
+                       pre.execute();
+                       this.dispose();
+                
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+            finally {           
+            try{
+                res.close();
+                pre.close();
+                setVisible(false);                
+            }
+            catch(Exception e){                
+            }             
+          }
+            
+            
+            
     }//GEN-LAST:event_exitActionPerformed
 
     private void paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentActionPerformed

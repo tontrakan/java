@@ -205,7 +205,7 @@ public class login extends javax.swing.JFrame {
                        String audittime=timeSt;
                        String statusC= "login";
                        String eid=connection.Emp.username;
-                       String sqlogin="insert into mydb.audit (idemp,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                       String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
                        
                        pre=connects.prepareStatement(sqlogin);
                        pre.execute();
@@ -239,7 +239,7 @@ public class login extends javax.swing.JFrame {
                        String audittime=timeSt;
                        String statusC= "login";
                        String eid=connection.Emp.username;
-                       String sqlogin="insert into mydb.audit (idemp,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                       String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
                        
                        pre=connects.prepareStatement(sqlogin);
                        pre.execute();
@@ -318,7 +318,7 @@ public class login extends javax.swing.JFrame {
                        String audittime=timeSt;
                        String statusC= "login";
                        String eid=connection.Emp.username;
-                       String sqlogin="insert into mydb.audit (idemp,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                       String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
                        
                        pre=connects.prepareStatement(sqlogin);
                        pre.execute();
@@ -352,7 +352,7 @@ public class login extends javax.swing.JFrame {
                        String audittime=timeSt;
                        String statusC= "login";
                        String eid=connection.Emp.username;
-                       String sqlogin="insert into mydb.audit (idemp,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                       String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
                        
                        pre=connects.prepareStatement(sqlogin);
                        pre.execute();
