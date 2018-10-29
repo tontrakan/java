@@ -59,9 +59,6 @@ public class AddEmp extends javax.swing.JFrame {
         name = new javax.swing.JTextField();
         surname = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
-        day = new javax.swing.JComboBox<>();
-        month = new javax.swing.JComboBox<>();
-        years = new javax.swing.JComboBox<>();
         male = new javax.swing.JRadioButton();
         female = new javax.swing.JRadioButton();
         tel = new javax.swing.JTextField();
@@ -81,13 +78,13 @@ public class AddEmp extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        dateofB = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -117,19 +114,7 @@ public class AddEmp extends javax.swing.JFrame {
         getContentPane().add(surname);
         surname.setBounds(210, 320, 140, 30);
         getContentPane().add(email);
-        email.setBounds(210, 360, 140, 30);
-
-        day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        getContentPane().add(day);
-        day.setBounds(530, 120, 70, 30);
-
-        month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-        getContentPane().add(month);
-        month.setBounds(600, 120, 70, 30);
-
-        years.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012" }));
-        getContentPane().add(years);
-        years.setBounds(530, 150, 140, 30);
+        email.setBounds(520, 120, 140, 30);
 
         male.setText("Male");
         male.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +123,7 @@ public class AddEmp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(male);
-        male.setBounds(530, 190, 60, 24);
+        male.setBounds(520, 200, 60, 24);
 
         female.setText("Female");
         female.addActionListener(new java.awt.event.ActionListener() {
@@ -147,13 +132,13 @@ public class AddEmp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(female);
-        female.setBounds(600, 190, 80, 24);
+        female.setBounds(590, 200, 80, 24);
         getContentPane().add(tel);
-        tel.setBounds(530, 220, 140, 30);
+        tel.setBounds(520, 230, 140, 30);
         getContentPane().add(basesalary);
-        basesalary.setBounds(530, 260, 140, 30);
+        basesalary.setBounds(520, 270, 140, 30);
         getContentPane().add(jobtitle);
-        jobtitle.setBounds(530, 300, 140, 30);
+        jobtitle.setBounds(520, 310, 140, 30);
 
         add.setText("Add Record");
         add.addActionListener(new java.awt.event.ActionListener() {
@@ -209,19 +194,15 @@ public class AddEmp extends javax.swing.JFrame {
 
         jLabel8.setText("Gender:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(420, 190, 100, 18);
+        jLabel8.setBounds(410, 200, 100, 18);
 
         jLabel10.setText("Date of birth:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(420, 130, 110, 18);
+        jLabel10.setBounds(410, 170, 110, 18);
 
         jLabel9.setText("Name:");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(100, 290, 110, 18);
-
-        jLabel11.setText("DD/MM/YYYY");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(420, 160, 100, 18);
 
         jLabel12.setText("Position:");
         getContentPane().add(jLabel12);
@@ -233,19 +214,23 @@ public class AddEmp extends javax.swing.JFrame {
 
         jLabel14.setText("Email:");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(100, 370, 110, 18);
+        jLabel14.setBounds(410, 130, 110, 18);
 
         jLabel15.setText("Contract:");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(420, 230, 110, 18);
+        jLabel15.setBounds(410, 240, 110, 18);
 
         jLabel16.setText("Basic Salary:");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(420, 270, 110, 18);
+        jLabel16.setBounds(410, 280, 110, 18);
 
         jLabel17.setText("Job Title:");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(420, 310, 110, 18);
+        jLabel17.setBounds(410, 320, 110, 18);
+
+        dateofB.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        getContentPane().add(dateofB);
+        dateofB.setBounds(520, 160, 140, 30);
 
         jMenu1.setText("File");
 
@@ -284,9 +269,7 @@ public class AddEmp extends javax.swing.JFrame {
         name.setText("");
         surname.setText("");
         email.setText("");
-        day.setSelectedItem(null);
-        month.setSelectedItem(null);
-        years.setSelectedItem(null);
+        dateofB.setText("");
         male.setSelected(false);
         female.setSelected(false);
         tel.setText("");
@@ -301,7 +284,7 @@ public class AddEmp extends javax.swing.JFrame {
                 "Are you sure you want to add record?","Add Record",
                 JOptionPane.YES_NO_OPTION);
                 String idp = "P001";
-                String dateofb=day.getSelectedItem().toString()+month.getSelectedItem().toString()+years.getSelectedItem().toString();
+                //String dateofb=day.getSelectedItem().toString()+month.getSelectedItem().toString()+years.getSelectedItem().toString();
                 
                 if(p==0){
                 
@@ -312,13 +295,13 @@ public class AddEmp extends javax.swing.JFrame {
                         String empsurname=surname.getText();
                         String empemail=email.getText();
                         String empTel=tel.getText();
-                        String empdate=dateofb;
+                        String empdate=dateofB.getText();
                         String empGender=gender;
                         String empSalary=basesalary.getText();
                         String empjob=jobtitle.getText();
                         String empPo =  position.getSelectedItem().toString();
                     
-                        String sql = "insert into mydb.emp_detail (emp_idemp,Fname,Lname,Email,Tel.,DateOfBirth,Gender,BaseSalary,Jobtitle,Position) values('"+idemp+"','"+empname+"','"+empsurname+"','"+empemail+",'"+empTel+"','"+empdate+"','"+empGender+"','"+empSalary+"','"+empjob+"','"+empPo+"') ";
+                        String sql = "insert into mydb.emp_detail (emp_idemp,Fname,Lname,Email,Tel,DateOfBirth,Gender,BaseSalary,Jobtitle,Position) values('"+idemp+"','"+empname+"','"+empsurname+"','"+empemail+",'"+empTel+"','"+empdate+"','"+empGender+"','"+empSalary+"','"+empjob+"','"+empPo+"')";
                         pre=connects.prepareStatement(sql);
 
                         pre.execute();
@@ -385,14 +368,13 @@ public class AddEmp extends javax.swing.JFrame {
     private javax.swing.JTextField basesalary;
     private javax.swing.JButton clear;
     private javax.swing.JMenu date;
-    private javax.swing.JComboBox<String> day;
+    private javax.swing.JTextField dateofB;
     private javax.swing.JTextField email;
     private javax.swing.JButton exit;
     private javax.swing.JRadioButton female;
     private javax.swing.JTextField idemp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -412,7 +394,6 @@ public class AddEmp extends javax.swing.JFrame {
     private javax.swing.JTextField jobtitle;
     private javax.swing.JButton main;
     private javax.swing.JRadioButton male;
-    private javax.swing.JComboBox<String> month;
     private javax.swing.JTextField name;
     private javax.swing.JPasswordField password;
     private javax.swing.JComboBox<String> position;
@@ -420,6 +401,5 @@ public class AddEmp extends javax.swing.JFrame {
     private javax.swing.JTextField tel;
     private javax.swing.JLabel userlogin;
     private javax.swing.JTextField username;
-    private javax.swing.JComboBox<String> years;
     // End of variables declaration//GEN-END:variables
 }
