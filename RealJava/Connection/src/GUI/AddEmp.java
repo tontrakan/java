@@ -52,7 +52,6 @@ public class AddEmp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        idemp = new javax.swing.JTextField();
         username = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
         position = new javax.swing.JComboBox<>();
@@ -71,7 +70,6 @@ public class AddEmp extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         userlogin = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -85,6 +83,8 @@ public class AddEmp extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         dateofB = new javax.swing.JTextField();
+        userlevel = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -96,23 +96,18 @@ public class AddEmp extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         getContentPane().setLayout(null);
-
-        idemp.setEditable(false);
-        idemp.setEnabled(false);
-        getContentPane().add(idemp);
-        idemp.setBounds(210, 120, 140, 30);
         getContentPane().add(username);
-        username.setBounds(210, 160, 140, 30);
+        username.setBounds(220, 120, 140, 30);
         getContentPane().add(password);
-        password.setBounds(210, 200, 140, 30);
+        password.setBounds(220, 160, 140, 30);
 
         position.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Programer", "System Analysis", "Business Analysis", "Project Manager" }));
         getContentPane().add(position);
-        position.setBounds(210, 240, 140, 30);
+        position.setBounds(220, 240, 140, 30);
         getContentPane().add(name);
-        name.setBounds(210, 280, 140, 30);
+        name.setBounds(220, 280, 140, 30);
         getContentPane().add(surname);
-        surname.setBounds(210, 320, 140, 30);
+        surname.setBounds(220, 320, 140, 30);
         getContentPane().add(email);
         email.setBounds(520, 120, 140, 30);
 
@@ -176,21 +171,17 @@ public class AddEmp extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(310, 50, 140, 18);
 
-        jLabel4.setText("Employees ID:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(100, 130, 110, 18);
-
         jLabel5.setText("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(20, 70, 750, 10);
 
         jLabel6.setText("Username:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(100, 170, 110, 18);
+        jLabel6.setBounds(110, 130, 110, 18);
 
-        jLabel7.setText("Password:");
+        jLabel7.setText("User Level:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(100, 210, 110, 18);
+        jLabel7.setBounds(110, 210, 110, 18);
 
         jLabel8.setText("Gender:");
         getContentPane().add(jLabel8);
@@ -202,15 +193,15 @@ public class AddEmp extends javax.swing.JFrame {
 
         jLabel9.setText("Name:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(100, 290, 110, 18);
+        jLabel9.setBounds(110, 290, 110, 18);
 
         jLabel12.setText("Position:");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(100, 250, 110, 18);
+        jLabel12.setBounds(110, 250, 110, 18);
 
         jLabel13.setText("Surname:");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(100, 330, 110, 18);
+        jLabel13.setBounds(110, 330, 110, 18);
 
         jLabel14.setText("Email:");
         getContentPane().add(jLabel14);
@@ -231,6 +222,14 @@ public class AddEmp extends javax.swing.JFrame {
         dateofB.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         getContentPane().add(dateofB);
         dateofB.setBounds(520, 160, 140, 30);
+
+        userlevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
+        getContentPane().add(userlevel);
+        userlevel.setBounds(220, 200, 140, 30);
+
+        jLabel11.setText("Password:");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(110, 170, 110, 18);
 
         jMenu1.setText("File");
 
@@ -261,10 +260,10 @@ public class AddEmp extends javax.swing.JFrame {
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         
-        idemp.setText("");
+        //idemp.setText("");
         username.setText("");
         password.setText("");
-        idemp.setText("");
+        //idemp.setText("");
         position.setSelectedItem(null);
         name.setText("");
         surname.setText("");
@@ -283,26 +282,31 @@ public class AddEmp extends javax.swing.JFrame {
                 int p = JOptionPane.showConfirmDialog(null, 
                 "Are you sure you want to add record?","Add Record",
                 JOptionPane.YES_NO_OPTION);
-                String idp = "P001";
+               // String idp = "P001";
                 //String dateofb=day.getSelectedItem().toString()+month.getSelectedItem().toString()+years.getSelectedItem().toString();
                 
                 if(p==0){
                 
                     try {
                         
-                        String idemp=idp;
-                        String empname = name.getText();
-                        String empsurname=surname.getText();
-                        String empemail=email.getText();
-                        String empTel=tel.getText();
-                        String empdate=dateofB.getText();
-                        String empGender=gender;
-                        String empSalary=basesalary.getText();
-                        String empjob=jobtitle.getText();
-                        String empPo =  position.getSelectedItem().toString();
+                        
                     
-                        String sql = "insert into mydb.emp_detail (emp_idemp,Fname,Lname,Email,Tel,DateOfBirth,Gender,BaseSalary,Jobtitle,Position) values('"+idemp+"','"+empname+"','"+empsurname+"','"+empemail+",'"+empTel+"','"+empdate+"','"+empGender+"','"+empSalary+"','"+empjob+"','"+empPo+"')";
+                        
+                        String sql = "insert into mydb.emp_detail (Fname,Lname,Email,Tel,DateOfBirth,Gender,BaseSalary,Jobtitle,Position,userlevel,username,password) values(?,?,?,?,?,?,?,?,?,?,?,?)";
                         pre=connects.prepareStatement(sql);
+                        
+                        pre.setString(1, name.getText());
+                        pre.setString(2, surname.getText());
+                        pre.setString(3, email.getText());
+                        pre.setString(4, tel.getText());
+                        pre.setString(5, dateofB.getText());
+                        pre.setString(6, gender);
+                        pre.setString(7, basesalary.getText());
+                        pre.setString(8, jobtitle.getText());
+                        pre.setString(9, position.getSelectedItem().toString());
+                        pre.setString(10, userlevel.getSelectedItem().toString());
+                        pre.setString(11, username.getText());
+                        pre.setString(12, password.getText());
 
                         pre.execute();
                         
@@ -314,17 +318,80 @@ public class AddEmp extends javax.swing.JFrame {
                     catch (Exception e) { 
                         
                         JOptionPane.showMessageDialog(null,e);
+                    }                            
+                    try{
+                        
+                        String sqr = "select * from mydb.emp_detail where (idemp) not in (select idemp from mydb.emp) ";
+                        pre=connects.prepareStatement(sqr);
+                        res=pre.executeQuery();
+                        
+                        while (res.next()) {
+                            String a1 = res.getString("idemp");
+                            String a2 = res.getString("username");
+                            String a3 = res.getString("password");
+                            String a4 = res.getString("userlevel");
+                            String sqe = "insert into mydb.emp (idemp,username,password,userlevel) values ('"+a1+"','"+a2+"','"+a3+"','"+a4+"')";
+                            pre=connects.prepareStatement(sqe);
+                            pre.execute();
+                            JOptionPane.showMessageDialog(null,"User account has been created successfully: " +" Username:  "+a2);
+                            
+                            
+                        }
+                        
                     }
-                    finally {           
-                        try{
+                    catch(Exception e){
+                        JOptionPane.showMessageDialog(null,e);
+                    }
+                    finally{
+                        try {
+                            
                             res.close();
-                            pre.close(); 
-                            //setVisible(false);
+                            pre.close();
+                            
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null,e);
                         }
-                        catch(Exception e){
-                            JOptionPane.showMessageDialog(null, e);
+                        
+                        Date date = GregorianCalendar
+                               .getInstance().getTime();
+                       DateFormat format = DateFormat.getDateInstance();
+                       String dateE = format.format(date);
+                       Date d= new Date();
+                       SimpleDateFormat time = 
+                               new SimpleDateFormat("HH:mm:ss");
+                       String timeSt = time.format(d);
+                       
+                       String auditdate=dateE;
+                       String audittime=timeSt;
+                       String statusC= "Add Records";
+                       String eid=connection.Emp.username;
+                       
+                        try {
+                            
+                            String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                       
+                            pre=connects.prepareStatement(sqlogin);
+                            pre.execute();
+                            //this.dispose();
+                            
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null,e);
                         }
+                        finally {
+
+                            try{
+                                res.close();
+                                pre.close();
+
+                            }  
+                
+                            catch(Exception e){
+                                JOptionPane.showMessageDialog(null,e);
+                            }
+                        }
+                       
                     }
+                    
                 }                                            
     }//GEN-LAST:event_addActionPerformed
 
@@ -372,9 +439,9 @@ public class AddEmp extends javax.swing.JFrame {
     private javax.swing.JTextField email;
     private javax.swing.JButton exit;
     private javax.swing.JRadioButton female;
-    private javax.swing.JTextField idemp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -382,7 +449,6 @@ public class AddEmp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -399,6 +465,7 @@ public class AddEmp extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> position;
     private javax.swing.JTextField surname;
     private javax.swing.JTextField tel;
+    private javax.swing.JComboBox<String> userlevel;
     private javax.swing.JLabel userlogin;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
