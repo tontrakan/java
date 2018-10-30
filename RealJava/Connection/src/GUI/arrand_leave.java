@@ -88,7 +88,7 @@ public class arrand_leave extends javax.swing.JFrame {
         getContentPane().add(detail);
         detail.setBounds(210, 70, 240, 30);
 
-        s3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2555", "2556", "2557", "2558", "2559", "2560", "2561", "2562", " " }));
+        s3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2561", "2562", " " }));
         getContentPane().add(s3);
         s3.setBounds(350, 110, 100, 30);
 
@@ -108,7 +108,7 @@ public class arrand_leave extends javax.swing.JFrame {
         getContentPane().add(e2);
         e2.setBounds(280, 150, 70, 30);
 
-        e3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2555", "2556", "2557", "2558", "2559", "2560", "2561", "2562", " " }));
+        e3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2561", "2562", " " }));
         getContentPane().add(e3);
         e3.setBounds(350, 150, 100, 30);
 
@@ -139,7 +139,12 @@ public class arrand_leave extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int p = JOptionPane.showConfirmDialog(null, "Are you sure you want to Send?","Send Teh Leave",JOptionPane.YES_NO_OPTION);
+       
+        if(detail.getText().equals("")){
+           JOptionPane.showMessageDialog(null,"field can not empty"); 
+        }
+        else{
+            int p = JOptionPane.showConfirmDialog(null, "Are you sure you want to Send?","Send Teh Leave",JOptionPane.YES_NO_OPTION);
         if(p==0){
             try {
                 String datestart = s1.getSelectedItem().toString()+s2.getSelectedItem().toString()+s3.getSelectedItem().toString();
@@ -156,6 +161,8 @@ public class arrand_leave extends javax.swing.JFrame {
             } catch (Exception e) {
             }
         }
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

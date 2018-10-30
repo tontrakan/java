@@ -34,6 +34,7 @@ public class searchemp extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, 
         size.height/2 - getHeight()/2);
+        loginuser.setText(String.valueOf(connection.Emp.username).toString());
         
        
         
@@ -90,6 +91,7 @@ public class searchemp extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         genre = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         search = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -188,7 +190,7 @@ public class searchemp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(350, 270, 120, 50);
+        jButton1.setBounds(300, 270, 120, 50);
 
         jButton2.setText("Update");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -197,9 +199,18 @@ public class searchemp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(210, 270, 120, 50);
+        jButton2.setBounds(160, 270, 120, 50);
         jPanel1.add(genre);
         genre.setBounds(490, 70, 140, 30);
+
+        jButton4.setText("exit to menu");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4);
+        jButton4.setBounds(450, 270, 120, 50);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(30, 70, 720, 330);
@@ -463,10 +474,18 @@ public class searchemp extends javax.swing.JFrame {
                 pre=connects.prepareStatement(sq);
                 pre.setString(1, username.getText());
                 pre.execute();
+                JOptionPane.showMessageDialog(null,"Data is deleted");
             } catch (Exception e) {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        MainMenu main = new MainMenu();
+        main.setVisible(true);
+        setVisible(false);
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -511,6 +530,7 @@ public class searchemp extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

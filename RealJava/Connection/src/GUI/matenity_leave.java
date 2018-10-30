@@ -96,7 +96,7 @@ public class matenity_leave extends javax.swing.JFrame {
         getContentPane().add(s2);
         s2.setBounds(280, 110, 70, 30);
 
-        s3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2555", "2556", "2557", "2558", "2559", "2560", "2561", "2562", " " }));
+        s3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2561", "2562", " " }));
         getContentPane().add(s3);
         s3.setBounds(350, 110, 100, 30);
 
@@ -108,7 +108,7 @@ public class matenity_leave extends javax.swing.JFrame {
         getContentPane().add(e2);
         e2.setBounds(280, 150, 70, 30);
 
-        e3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2555", "2556", "2557", "2558", "2559", "2560", "2561", "2562", " " }));
+        e3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2561", "2562", " " }));
         getContentPane().add(e3);
         e3.setBounds(350, 150, 100, 30);
 

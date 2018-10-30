@@ -5,17 +5,32 @@
  */
 package GUI;
 
-/**
- *
- * @author ostdemon
- */
+import connection.connect;
+import java.awt.event.KeyEvent;
+import java.awt.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 public class sick_leave extends javax.swing.JFrame {
 
-    /**
-     * Creates new form leave
-     */
+    connection.connect connect = new connection.connect();
+    Connection connects = connect.get_Connections();
+    ResultSet res = null;
+    PreparedStatement pre = null;
     public sick_leave() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, 
+        size.height/2 - getHeight()/2);
+        
+        emp.setText(String.valueOf(connection.Emp.username).toString());
     }
 
     /**
@@ -73,7 +88,7 @@ public class sick_leave extends javax.swing.JFrame {
         getContentPane().add(jTextField1);
         jTextField1.setBounds(210, 70, 240, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2555", "2556", "2557", "2558", "2559", "2560", "2561", "2562", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2561", "2562", " " }));
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(350, 110, 100, 30);
 
@@ -93,7 +108,7 @@ public class sick_leave extends javax.swing.JFrame {
         getContentPane().add(jComboBox5);
         jComboBox5.setBounds(280, 150, 70, 30);
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2555", "2556", "2557", "2558", "2559", "2560", "2561", "2562", " " }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2561", "2562", " " }));
         getContentPane().add(jComboBox6);
         jComboBox6.setBounds(350, 150, 100, 30);
 

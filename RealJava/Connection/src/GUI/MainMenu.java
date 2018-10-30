@@ -114,6 +114,11 @@ public class MainMenu extends javax.swing.JFrame {
         loginuser.setBounds(90, 10, 90, 20);
 
         jButton1.setText("Leave");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
         jButton1.setBounds(50, 120, 200, 50);
 
@@ -263,9 +268,16 @@ public class MainMenu extends javax.swing.JFrame {
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         searchemp search = new searchemp();
         search.setVisible(true);
-        setAlwaysOnTop(false);
+        setVisible(false);
 
     }//GEN-LAST:event_searchActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        leave l = new leave();
+        l.setVisible(true);
+        setVisible(false);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

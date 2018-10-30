@@ -98,14 +98,32 @@ public class AddEmp extends javax.swing.JFrame {
         getContentPane().setLayout(null);
         getContentPane().add(username);
         username.setBounds(220, 150, 140, 30);
+
+        password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                passwordKeyReleased(evt);
+            }
+        });
         getContentPane().add(password);
         password.setBounds(220, 190, 140, 30);
 
         position.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Programer", "System Analysis", "Business Analysis", "Project Manager" }));
         getContentPane().add(position);
         position.setBounds(220, 270, 140, 30);
+
+        name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nameKeyReleased(evt);
+            }
+        });
         getContentPane().add(name);
         name.setBounds(220, 310, 140, 30);
+
+        surname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                surnameKeyReleased(evt);
+            }
+        });
         getContentPane().add(surname);
         surname.setBounds(220, 350, 140, 30);
         getContentPane().add(email);
@@ -145,6 +163,11 @@ public class AddEmp extends javax.swing.JFrame {
         add.setBounds(60, 440, 150, 60);
 
         exit.setText("Exit");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
         getContentPane().add(exit);
         exit.setBounds(570, 440, 150, 60);
 
@@ -158,6 +181,11 @@ public class AddEmp extends javax.swing.JFrame {
         clear.setBounds(230, 440, 150, 60);
 
         main.setText("Main Menu");
+        main.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainActionPerformed(evt);
+            }
+        });
         getContentPane().add(main);
         main.setBounds(400, 440, 150, 60);
 
@@ -279,19 +307,18 @@ public class AddEmp extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
                           
-                int p = JOptionPane.showConfirmDialog(null, 
+            if(name.getText().equals("")||surname.getText().equals("")||username.getText().equals("")||password.getText().equals("")||email.getText().equals("")||dateofB.getText().equals("")||tel.getText().equals("")||basesalary.getText().equals("")||jobtitle.getText().equals("")){
+                   JOptionPane.showMessageDialog(null,"field can not empty"); 
+            }
+            else{
+                  int p = JOptionPane.showConfirmDialog(null, 
                 "Are you sure you want to add record?","Add Record",
                 JOptionPane.YES_NO_OPTION);
-               // String idp = "P001";
-                //String dateofb=day.getSelectedItem().toString()+month.getSelectedItem().toString()+years.getSelectedItem().toString();
+                
                 
                 if(p==0){
                 
                     try {
-                        
-                        
-                    
-                        
                         String sql = "insert into mydb.emp_detail (Fname,Lname,Email,Tel,DateOfBirth,Gender,BaseSalary,Jobtitle,Position,userlevel,username,password) values(?,?,?,?,?,?,?,?,?,?,?,?)";
                         pre=connects.prepareStatement(sql);
                         
@@ -307,7 +334,10 @@ public class AddEmp extends javax.swing.JFrame {
                         pre.setString(10, userlevel.getSelectedItem().toString());
                         pre.setString(11, username.getText());
                         pre.setString(12, password.getText());
-
+                        
+                        
+                        
+                        
                         pre.execute();
                         
                         JOptionPane.showMessageDialog(null,"Data is saved "
@@ -392,8 +422,32 @@ public class AddEmp extends javax.swing.JFrame {
                        
                     }
                     
-                }                                            
+                }  
+            }
+                                                            
     }//GEN-LAST:event_addActionPerformed
+
+    private void passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyReleased
+        
+    }//GEN-LAST:event_passwordKeyReleased
+
+    private void nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyReleased
+         
+    }//GEN-LAST:event_nameKeyReleased
+
+    private void surnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_surnameKeyReleased
+         
+    }//GEN-LAST:event_surnameKeyReleased
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_exitActionPerformed
+
+    private void mainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainActionPerformed
+        MainMenu main = new MainMenu();
+        main.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_mainActionPerformed
 
     /**
      * @param args the command line arguments

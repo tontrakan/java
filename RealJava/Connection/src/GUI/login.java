@@ -62,6 +62,7 @@ public class login extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         selectlevel = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         Menu = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         txt_date = new javax.swing.JMenu();
@@ -88,20 +89,20 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(cmd_Login);
-        cmd_Login.setBounds(130, 210, 110, 40);
+        cmd_Login.setBounds(80, 190, 110, 40);
 
         jLabel1.setText("Username:");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(90, 100, 90, 18);
+        jLabel1.setBounds(80, 80, 90, 18);
 
         jLabel2.setText("Password:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(90, 140, 80, 18);
+        jLabel2.setBounds(80, 120, 80, 18);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Please enter your username and password");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(70, 50, 300, 20);
+        jLabel6.setBounds(50, 30, 300, 20);
 
         username.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         username.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -110,15 +111,18 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(username);
-        username.setBounds(200, 90, 132, 30);
+        username.setBounds(190, 70, 132, 30);
 
         password.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 passwordKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                passwordKeyReleased(evt);
+            }
         });
         jPanel2.add(password);
-        password.setBounds(200, 130, 130, 30);
+        password.setBounds(190, 110, 130, 30);
 
         selectlevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "User" }));
         selectlevel.addActionListener(new java.awt.event.ActionListener() {
@@ -127,11 +131,15 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(selectlevel);
-        selectlevel.setBounds(200, 170, 130, 30);
+        selectlevel.setBounds(190, 150, 130, 30);
 
         jLabel3.setText("Select Position:");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(70, 180, 110, 18);
+        jLabel3.setBounds(60, 160, 110, 18);
+
+        jButton1.setText("Register");
+        jPanel2.add(jButton1);
+        jButton1.setBounds(210, 190, 110, 40);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 400, 260);
@@ -243,12 +251,15 @@ public class login extends javax.swing.JFrame {
                        
                        pre=connects.prepareStatement(sqlogin);
                        pre.execute();
-                       this.dispose();
+                       //this.dispose();
                     }
                     
                     else{
                        JOptionPane.showMessageDialog(null,
-                       "Username and Password is not correct");
+                       "Username or Password or Leveluser is not correct");
+                       login log = new login();
+                       log.setVisible(true);
+                       
                    }
                     
                 }
@@ -360,8 +371,10 @@ public class login extends javax.swing.JFrame {
                     }
                     
                     else{
-                       JOptionPane.showMessageDialog(null,
-                       "Username and Password is not correct");
+                       JOptionPane.showMessageDialog(null,                     
+                       "Username or Password or Leveluser is not correct");
+                       login log = new login();
+                       log.setVisible(true);
                    }
                     
                 }
@@ -392,10 +405,17 @@ public class login extends javax.swing.JFrame {
 
     private void usernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyReleased
         if(username.getText().length()>=20){
-            JOptionPane.showMessageDialog(null, "can input for 12 character");
+            JOptionPane.showMessageDialog(null, "can input for 20 character");
             username.setText("");
         }
     }//GEN-LAST:event_usernameKeyReleased
+
+    private void passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyReleased
+        if(password.getText().length()>=20){
+            JOptionPane.showMessageDialog(null, "can input for 20 character");
+            password.setText("");
+        }
+    }//GEN-LAST:event_passwordKeyReleased
 
     /**
      * @param args the command line arguments
@@ -437,6 +457,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton cmd_Login;
     private javax.swing.JMenu command;
     private javax.swing.JMenuItem ctrlQ;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
