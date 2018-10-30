@@ -97,19 +97,19 @@ public class AddEmp extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().add(username);
-        username.setBounds(220, 120, 140, 30);
+        username.setBounds(220, 150, 140, 30);
         getContentPane().add(password);
-        password.setBounds(220, 160, 140, 30);
+        password.setBounds(220, 190, 140, 30);
 
         position.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Programer", "System Analysis", "Business Analysis", "Project Manager" }));
         getContentPane().add(position);
-        position.setBounds(220, 240, 140, 30);
+        position.setBounds(220, 270, 140, 30);
         getContentPane().add(name);
-        name.setBounds(220, 280, 140, 30);
+        name.setBounds(220, 310, 140, 30);
         getContentPane().add(surname);
-        surname.setBounds(220, 320, 140, 30);
+        surname.setBounds(220, 350, 140, 30);
         getContentPane().add(email);
-        email.setBounds(520, 120, 140, 30);
+        email.setBounds(520, 150, 140, 30);
 
         male.setText("Male");
         male.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +118,7 @@ public class AddEmp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(male);
-        male.setBounds(520, 200, 60, 24);
+        male.setBounds(520, 230, 60, 24);
 
         female.setText("Female");
         female.addActionListener(new java.awt.event.ActionListener() {
@@ -127,13 +127,13 @@ public class AddEmp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(female);
-        female.setBounds(590, 200, 80, 24);
+        female.setBounds(590, 230, 80, 24);
         getContentPane().add(tel);
-        tel.setBounds(520, 230, 140, 30);
+        tel.setBounds(520, 260, 140, 30);
         getContentPane().add(basesalary);
-        basesalary.setBounds(520, 270, 140, 30);
+        basesalary.setBounds(520, 300, 140, 30);
         getContentPane().add(jobtitle);
-        jobtitle.setBounds(520, 310, 140, 30);
+        jobtitle.setBounds(520, 340, 140, 30);
 
         add.setText("Add Record");
         add.addActionListener(new java.awt.event.ActionListener() {
@@ -142,11 +142,11 @@ public class AddEmp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(add);
-        add.setBounds(70, 440, 150, 60);
+        add.setBounds(60, 440, 150, 60);
 
         exit.setText("Exit");
         getContentPane().add(exit);
-        exit.setBounds(590, 440, 140, 60);
+        exit.setBounds(570, 440, 150, 60);
 
         clear.setText("Clear");
         clear.addActionListener(new java.awt.event.ActionListener() {
@@ -155,11 +155,11 @@ public class AddEmp extends javax.swing.JFrame {
             }
         });
         getContentPane().add(clear);
-        clear.setBounds(250, 440, 140, 60);
+        clear.setBounds(230, 440, 150, 60);
 
         main.setText("Main Menu");
         getContentPane().add(main);
-        main.setBounds(420, 440, 140, 60);
+        main.setBounds(400, 440, 150, 60);
 
         jLabel1.setText("Login As:");
         getContentPane().add(jLabel1);
@@ -169,67 +169,67 @@ public class AddEmp extends javax.swing.JFrame {
 
         jLabel3.setText("Employees Details");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(310, 50, 140, 18);
+        jLabel3.setBounds(310, 80, 140, 18);
 
         jLabel5.setText("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(20, 70, 750, 10);
+        jLabel5.setBounds(20, 100, 750, 10);
 
         jLabel6.setText("Username:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(110, 130, 110, 18);
+        jLabel6.setBounds(110, 160, 110, 18);
 
         jLabel7.setText("User Level:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(110, 210, 110, 18);
+        jLabel7.setBounds(110, 240, 110, 18);
 
         jLabel8.setText("Gender:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(410, 200, 100, 18);
+        jLabel8.setBounds(410, 230, 100, 18);
 
         jLabel10.setText("Date of birth:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(410, 170, 110, 18);
+        jLabel10.setBounds(410, 200, 110, 18);
 
         jLabel9.setText("Name:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(110, 290, 110, 18);
+        jLabel9.setBounds(110, 320, 110, 18);
 
         jLabel12.setText("Position:");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(110, 250, 110, 18);
+        jLabel12.setBounds(110, 280, 110, 18);
 
         jLabel13.setText("Surname:");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(110, 330, 110, 18);
+        jLabel13.setBounds(110, 360, 110, 18);
 
         jLabel14.setText("Email:");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(410, 130, 110, 18);
+        jLabel14.setBounds(410, 160, 110, 18);
 
         jLabel15.setText("Contract:");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(410, 240, 110, 18);
+        jLabel15.setBounds(410, 270, 110, 18);
 
         jLabel16.setText("Basic Salary:");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(410, 280, 110, 18);
+        jLabel16.setBounds(410, 310, 110, 18);
 
         jLabel17.setText("Job Title:");
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(410, 320, 110, 18);
+        jLabel17.setBounds(410, 350, 110, 18);
 
         dateofB.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         getContentPane().add(dateofB);
-        dateofB.setBounds(520, 160, 140, 30);
+        dateofB.setBounds(520, 190, 140, 30);
 
         userlevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
         getContentPane().add(userlevel);
-        userlevel.setBounds(220, 200, 140, 30);
+        userlevel.setBounds(220, 230, 140, 30);
 
         jLabel11.setText("Password:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(110, 170, 110, 18);
+        jLabel11.setBounds(110, 200, 110, 18);
 
         jMenu1.setText("File");
 
@@ -352,7 +352,7 @@ public class AddEmp extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null,e);
                         }
                         
-                        Date date = GregorianCalendar
+                       Date date = GregorianCalendar
                                .getInstance().getTime();
                        DateFormat format = DateFormat.getDateInstance();
                        String dateE = format.format(date);

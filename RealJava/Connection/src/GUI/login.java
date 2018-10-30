@@ -391,7 +391,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_selectlevelActionPerformed
 
     private void usernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyReleased
-        if(username.getText().length()>=12){
+        if(username.getText().length()>=20){
             JOptionPane.showMessageDialog(null, "can input for 12 character");
             username.setText("");
         }
