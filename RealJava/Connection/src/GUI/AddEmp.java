@@ -11,12 +11,15 @@ import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AddEmp extends javax.swing.JFrame {
 
@@ -35,6 +38,7 @@ public class AddEmp extends javax.swing.JFrame {
         setLocation(size.width/2 - getWidth()/2, 
         size.height/2 - getHeight()/2);
         date();
+        userlogin.setText(String.valueOf(connection.Emp.username).toString());
     }
     
     public void date (){

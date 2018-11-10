@@ -17,13 +17,13 @@ import javax.swing.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-public class leave extends javax.swing.JFrame {
+public class LeaveUser extends javax.swing.JFrame {
 
     connection.connect connect = new connection.connect();
     Connection connects = connect.get_Connections();
     ResultSet res = null;
     PreparedStatement pre = null;
-    public leave() {
+    public LeaveUser() {
         initComponents();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
@@ -54,6 +54,7 @@ public class leave extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(520, 430));
         setMinimumSize(new java.awt.Dimension(520, 430));
         setPreferredSize(new java.awt.Dimension(520, 430));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jButton1.setText("Matenity Leave");
@@ -94,11 +95,12 @@ public class leave extends javax.swing.JFrame {
 
         jLabel6.setText("loggin As:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 0, 70, 18);
+        jLabel6.setBounds(10, 10, 70, 18);
         getContentPane().add(emp);
-        emp.setBounds(80, 0, 80, 20);
+        emp.setBounds(90, 10, 80, 20);
 
         viewL.setText("View Leaves");
+        viewL.setEnabled(false);
         viewL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewLActionPerformed(evt);
@@ -110,10 +112,15 @@ public class leave extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        matenity_leave matenity = new matenity_leave();
+        matenity.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         sick_leave sick = new sick_leave();
         sick.setVisible(true);
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -121,13 +128,8 @@ public class leave extends javax.swing.JFrame {
         arrand.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        matenity_leave matenity = new matenity_leave();
-        matenity.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        MainMenu main = new MainMenu();
+        MainMenuUser main = new MainMenuUser();
         main.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -155,20 +157,20 @@ public class leave extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeaveUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeaveUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeaveUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LeaveUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new leave().setVisible(true);
+                new LeaveUser().setVisible(true);
             }
         });
     }

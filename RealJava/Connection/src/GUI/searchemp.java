@@ -35,9 +35,18 @@ public class searchemp extends javax.swing.JFrame {
         setLocation(size.width/2 - getWidth()/2, 
         size.height/2 - getHeight()/2);
         loginuser.setText(String.valueOf(connection.Emp.username).toString());
-        
+        date();
        
         
+    }
+    public void date (){
+        
+        Calendar cal =new GregorianCalendar();
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        
+        date.setText((month+1)+"/"+day+"/"+year);       
     }
     
     private void Update(){
@@ -92,15 +101,14 @@ public class searchemp extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         genre = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
+        clear = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         search = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         loginuser = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        date = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 500));
@@ -190,7 +198,7 @@ public class searchemp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(300, 270, 120, 50);
+        jButton1.setBounds(220, 270, 120, 50);
 
         jButton2.setText("Update");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +207,7 @@ public class searchemp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(160, 270, 120, 50);
+        jButton2.setBounds(80, 270, 120, 50);
         jPanel1.add(genre);
         genre.setBounds(490, 70, 140, 30);
 
@@ -210,7 +218,16 @@ public class searchemp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(450, 270, 120, 50);
+        jButton4.setBounds(500, 270, 120, 50);
+
+        clear.setText("Clear");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+        jPanel1.add(clear);
+        clear.setBounds(360, 270, 120, 50);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(30, 70, 720, 330);
@@ -246,41 +263,13 @@ public class searchemp extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(510, 30, 80, 30);
 
-        jMenu1.setText("File");
-
-        jMenuItem2.setText("Attach Image");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem1.setText("Reset");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu1);
+        date.setText("date:");
+        jMenuBar1.add(date);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-
-        
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyReleased
             
@@ -487,6 +476,22 @@ public class searchemp extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        search.setText("");
+        name.setText("");
+        username.setText("");
+        surname.setText("");
+        email.setText("");
+        dateofB.setText("");
+        genre.setText("");
+        tel.setText("");
+        basesalary.setText("");
+        jobtitle.setText("");
+        userlevel.setSelectedItem(null);
+        position.setSelectedItem(null);
+        
+    }//GEN-LAST:event_clearActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -524,6 +529,8 @@ public class searchemp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField basesalary;
+    private javax.swing.JButton clear;
+    private javax.swing.JMenu date;
     private javax.swing.JTextField dateofB;
     private javax.swing.JTextField email;
     private javax.swing.JTextField genre;
@@ -544,10 +551,7 @@ public class searchemp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jobtitle;
     private javax.swing.JLabel loginuser;

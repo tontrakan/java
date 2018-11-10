@@ -197,6 +197,8 @@ public class login extends javax.swing.JFrame {
                 String access=(selectlevel.getSelectedItem().toString());
                 if(access=="Admin"){
                     if(count==1){
+                        
+                        //if(username.getText().equals(res.getString(1))){System.out.println("reapeat");}
                         JOptionPane.showMessageDialog(null, "success");
                        MainMenu main = new MainMenu();
                        main.setVisible(true);
@@ -232,7 +234,7 @@ public class login extends javax.swing.JFrame {
                 else if (access=="user"){
                     if(count==1){
                         JOptionPane.showMessageDialog(null, "success");
-                       MainMenu main = new MainMenu();
+                       MainMenuUser main = new MainMenuUser();
                        main.setVisible(true);
                        Date date = GregorianCalendar
                                .getInstance().getTime();
@@ -348,7 +350,7 @@ public class login extends javax.swing.JFrame {
                 else if (access=="user"){
                     if(count==1){
                         JOptionPane.showMessageDialog(null, "success");
-                       MainMenu main = new MainMenu();
+                       MainMenuUser main = new MainMenuUser();
                        main.setVisible(true);
                        Date date = GregorianCalendar
                                .getInstance().getTime();
