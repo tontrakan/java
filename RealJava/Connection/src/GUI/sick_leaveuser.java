@@ -17,13 +17,13 @@ import javax.swing.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-public class sick_leave extends javax.swing.JFrame {
+public class sick_leaveuser extends javax.swing.JFrame {
 
     connection.connect connect = new connection.connect();
     Connection connects = connect.get_Connections();
     ResultSet res = null;
     PreparedStatement pre = null;
-    public sick_leave() {
+    public sick_leaveuser() {
         initComponents();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
@@ -61,9 +61,7 @@ public class sick_leave extends javax.swing.JFrame {
         emp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(500, 310));
         setMinimumSize(new java.awt.Dimension(500, 310));
-        setPreferredSize(new java.awt.Dimension(500, 310));
         getContentPane().setLayout(null);
 
         jLabel1.setText("number of day leave");
@@ -144,7 +142,7 @@ public class sick_leave extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MainMenu main = new MainMenu();
+        MainMenuUser main = new MainMenuUser();
         main.setVisible(true);
         setVisible(false);                     
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -191,21 +189,23 @@ public class sick_leave extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(sick_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(sick_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(sick_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(sick_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sick_leave().setVisible(true);
+                new sick_leaveuser().setVisible(true);
             }
         });
     }

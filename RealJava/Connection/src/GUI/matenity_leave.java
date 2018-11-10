@@ -117,6 +117,11 @@ public class matenity_leave extends javax.swing.JFrame {
         e1.setBounds(210, 150, 70, 30);
 
         jButton1.setText("exit to menu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(250, 240, 110, 36);
 
@@ -140,25 +145,35 @@ public class matenity_leave extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        int p = JOptionPane.showConfirmDialog(null, "Are you sure you want to Send?","Send Teh Leave",JOptionPane.YES_NO_OPTION);
-        if(p==0){
-            try {
-                String datestart = s1.getSelectedItem().toString()+s2.getSelectedItem().toString()+s3.getSelectedItem().toString();
-                String dateend = e1.getSelectedItem().toString()+e2.getSelectedItem().toString()+e3.getSelectedItem().toString();
-                String amount = a1.getSelectedItem().toString();
-                String Ldetail = detail.getText();
-                String user = connection.Emp.username.toString();
-                
-                String sql = "insert into mydb.matenity_leave (leavestartdate,leaveenddate,leaveamount,matenity_detail,username) values ('"+datestart+"','"+dateend+"','"+amount+"','"+Ldetail+"','"+user+"')";
-                pre=connects.prepareStatement(sql);
-                pre.execute();
-                JOptionPane.showMessageDialog(null,"send the leave to server and wait for reply from your boss");
-                
-            } catch (Exception e) {
+        if(detail.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"field can not empty");
+        }
+        else{
+            int p = JOptionPane.showConfirmDialog(null, "Are you sure you want to Send?","Send Teh Leave",JOptionPane.YES_NO_OPTION);
+            if(p==0){
+                try {
+                    String datestart = s1.getSelectedItem().toString()+s2.getSelectedItem().toString()+s3.getSelectedItem().toString();
+                    String dateend = e1.getSelectedItem().toString()+e2.getSelectedItem().toString()+e3.getSelectedItem().toString();
+                    String amount = a1.getSelectedItem().toString();
+                    String Ldetail = detail.getText();
+                    String user = connection.Emp.username.toString();
+                    
+                    String sql = "insert into mydb.matenity_leave (leavestartdate,leaveenddate,leaveamount,matenity_detail,username) values ('"+datestart+"','"+dateend+"','"+amount+"','"+Ldetail+"','"+user+"')";
+                    pre=connects.prepareStatement(sql);
+                    pre.execute();
+                    JOptionPane.showMessageDialog(null,"send the leave to server and wait for reply from your boss");
+                    
+                } catch (Exception e) {
+                }
             }
         }
-        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MainMenu main = new MainMenu();
+        main.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -311,124 +311,110 @@ public class AddEmp extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
                           
-            if(name.getText().equals("")||surname.getText().equals("")||username.getText().equals("")||password.getText().equals("")||email.getText().equals("")||dateofB.getText().equals("")||tel.getText().equals("")||basesalary.getText().equals("")||jobtitle.getText().equals("")){
-                   JOptionPane.showMessageDialog(null,"field can not empty"); 
-            }
-            else{
-                  int p = JOptionPane.showConfirmDialog(null, 
-                "Are you sure you want to add record?","Add Record",
-                JOptionPane.YES_NO_OPTION);
+        if(name.getText().equals("")||surname.getText().equals("")||username.getText().equals("")||password.getText().equals("")||email.getText().equals("")||dateofB.getText().equals("")||tel.getText().equals("")||basesalary.getText().equals("")||jobtitle.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"field can not empty");
+        }
+        else{
+            int p = JOptionPane.showConfirmDialog(null,
+                    "Are you sure you want to add record?","Add Record",
+                    JOptionPane.YES_NO_OPTION);
+            
+            
+            if(p==0){
                 
-                
-                if(p==0){
-                
-                    try {
-                        String sql = "insert into mydb.emp_detail (Fname,Lname,Email,Tel,DateOfBirth,Gender,BaseSalary,Jobtitle,Position,userlevel,username,password) values(?,?,?,?,?,?,?,?,?,?,?,?)";
-                        pre=connects.prepareStatement(sql);
-                        
-                        pre.setString(1, name.getText());
-                        pre.setString(2, surname.getText());
-                        pre.setString(3, email.getText());
-                        pre.setString(4, tel.getText());
-                        pre.setString(5, dateofB.getText());
-                        pre.setString(6, gender);
-                        pre.setString(7, basesalary.getText());
-                        pre.setString(8, jobtitle.getText());
-                        pre.setString(9, position.getSelectedItem().toString());
-                        pre.setString(10, userlevel.getSelectedItem().toString());
-                        pre.setString(11, username.getText());
-                        pre.setString(12, password.getText());
-                        
-                        
-                        
-                        
+                try {
+                    String sql = "insert into mydb.emp_detail (Fname,Lname,Email,Tel,DateOfBirth,Gender,BaseSalary,Jobtitle,Position,userlevel,username,password) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+                    pre=connects.prepareStatement(sql);
+                    
+                    pre.setString(1, name.getText());
+                    pre.setString(2, surname.getText());
+                    pre.setString(3, email.getText());
+                    pre.setString(4, tel.getText());
+                    pre.setString(5, dateofB.getText());
+                    pre.setString(6, gender);
+                    pre.setString(7, basesalary.getText());
+                    pre.setString(8, jobtitle.getText());
+                    pre.setString(9, position.getSelectedItem().toString());
+                    pre.setString(10, userlevel.getSelectedItem().toString());
+                    pre.setString(11, username.getText());
+                    pre.setString(12, password.getText());
+                    pre.execute();
+                    JOptionPane.showMessageDialog(null,"Data is saved "
+                            + "successfully");
+                }
+                catch (Exception e) {
+                    JOptionPane.showMessageDialog(null,e);
+                }
+                try{
+                    String sqr = "select * from mydb.emp_detail where (idemp) not in (select idemp from mydb.emp) ";
+                    pre=connects.prepareStatement(sqr);
+                    res=pre.executeQuery();
+                    while (res.next()) {
+                        String a1 = res.getString("idemp");
+                        String a2 = res.getString("username");
+                        String a3 = res.getString("password");
+                        String a4 = res.getString("userlevel");
+                        String sqe = "insert into mydb.emp (idemp,username,password,userlevel) values ('"+a1+"','"+a2+"','"+a3+"','"+a4+"')";
+                        pre=connects.prepareStatement(sqe);
                         pre.execute();
-                        
-                        JOptionPane.showMessageDialog(null,"Data is saved "
-                        + "successfully");
-                    
-                    
-                    } 
-                    catch (Exception e) { 
-                        
-                        JOptionPane.showMessageDialog(null,e);
-                    }                            
-                    try{
-                        
-                        String sqr = "select * from mydb.emp_detail where (idemp) not in (select idemp from mydb.emp) ";
-                        pre=connects.prepareStatement(sqr);
-                        res=pre.executeQuery();
-                        
-                        while (res.next()) {
-                            String a1 = res.getString("idemp");
-                            String a2 = res.getString("username");
-                            String a3 = res.getString("password");
-                            String a4 = res.getString("userlevel");
-                            String sqe = "insert into mydb.emp (idemp,username,password,userlevel) values ('"+a1+"','"+a2+"','"+a3+"','"+a4+"')";
-                            pre=connects.prepareStatement(sqe);
-                            pre.execute();
-                            JOptionPane.showMessageDialog(null,"User account has been created successfully: " +" Username:  "+a2);
-                            
-                            
-                        }
-                        
+                        JOptionPane.showMessageDialog(null,"User account has been created successfully: " +" Username:  "+a2);
                     }
-                    catch(Exception e){
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e);
+                }
+                finally{
+                    try {
+                        
+                        res.close();
+                        pre.close();
+                        
+                    } catch (Exception e) {
                         JOptionPane.showMessageDialog(null,e);
                     }
-                    finally{
-                        try {
-                            
+                    
+                    Date date = GregorianCalendar
+                            .getInstance().getTime();
+                    DateFormat format = DateFormat.getDateInstance();
+                    String dateE = format.format(date);
+                    Date d= new Date();
+                    SimpleDateFormat time =
+                            new SimpleDateFormat("HH:mm:ss");
+                    String timeSt = time.format(d);
+                    
+                    String auditdate=dateE;
+                    String audittime=timeSt;
+                    String statusC= "Add Records";
+                    String eid=connection.Emp.username;
+                    
+                    try {
+                        
+                        String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                        
+                        pre=connects.prepareStatement(sqlogin);
+                        pre.execute();
+                        //this.dispose();
+                        
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null,e);
+                    }
+                    finally {
+                        
+                        try{
                             res.close();
                             pre.close();
                             
-                        } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null,e);
                         }
                         
-                       Date date = GregorianCalendar
-                               .getInstance().getTime();
-                       DateFormat format = DateFormat.getDateInstance();
-                       String dateE = format.format(date);
-                       Date d= new Date();
-                       SimpleDateFormat time = 
-                               new SimpleDateFormat("HH:mm:ss");
-                       String timeSt = time.format(d);
-                       
-                       String auditdate=dateE;
-                       String audittime=timeSt;
-                       String statusC= "Add Records";
-                       String eid=connection.Emp.username;
-                       
-                        try {
-                            
-                            String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
-                       
-                            pre=connects.prepareStatement(sqlogin);
-                            pre.execute();
-                            //this.dispose();
-                            
-                        } catch (Exception e) {
+                        catch(Exception e){
                             JOptionPane.showMessageDialog(null,e);
                         }
-                        finally {
-
-                            try{
-                                res.close();
-                                pre.close();
-
-                            }  
-                
-                            catch(Exception e){
-                                JOptionPane.showMessageDialog(null,e);
-                            }
-                        }
-                       
                     }
                     
-                }  
+                }
+                
             }
-                                                            
+        }
     }//GEN-LAST:event_addActionPerformed
 
     private void passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyReleased

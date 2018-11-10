@@ -295,53 +295,50 @@ public class searchemp extends javax.swing.JFrame {
                 
                 String sql = "update mydb.emp_detail set BaseSalary='"+v1+"',Fname='"+v3+"',Lname='"+v4+"',Email='"+v5+"',Tel='"+v6+"',DateOfBirth='"+v7+"',Gender='"+v8+"',Jobtitle='"+v9+"',userlevel='"+v10+"',Position='"+v11+"'  where username='"+v2+"'";
                 pre=connects.prepareStatement(sql);
-
+                
                 pre.execute();
                 
-                JOptionPane.showMessageDialog(null, "Record Updated");
-                
-                
-                
-            } 
+                JOptionPane.showMessageDialog(null, "Record Updated");   
+            }
             catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
             Date date = GregorianCalendar
-                               .getInstance().getTime();
+                    .getInstance().getTime();
             DateFormat format = DateFormat.getDateInstance();
             String dateE = format.format(date);
             Date d= new Date();
             SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
             String timeSt = time.format(d);
-                       
+            
             String auditdate=dateE;
             String audittime=timeSt;
             String statusC= "Update Records";
             String eid=connection.Emp.username;
-                       
+            
             try {
-                            
+                
                 String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
-                       
+                
                 pre=connects.prepareStatement(sqlogin);
                 pre.execute();
-                            //this.dispose();
-                           
+                //this.dispose();
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,e);
             }
             finally {
-
+                
                 try{
                     res.close();
                     pre.close();
-
-                }  
+                    
+                }
                 
                 catch(Exception e){
                     JOptionPane.showMessageDialog(null,e);
-                    }
-                }                       
+                }
+            }
         }   
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -349,57 +346,57 @@ public class searchemp extends javax.swing.JFrame {
         
         try {
             
-                String sql = "SELECT * FROM mydb.emp_detail where username=? ";
-                pre=connects.prepareStatement(sql);
-                pre.setString(1, search.getText());
-                res=pre.executeQuery();
+            String sql = "SELECT * FROM mydb.emp_detail where username=? ";
+            pre=connects.prepareStatement(sql);
+            pre.setString(1, search.getText());
+            res=pre.executeQuery();
+            
+            if(res.next()){
                 
-                if(res.next()){
-                    
-                    String addusername = res.getString("username");
-                    username.setText(addusername);
+                String addusername = res.getString("username");
+                username.setText(addusername);
                 
-                    String adduserlevel = res.getString("userlevel");
-                    userlevel.setSelectedItem(adduserlevel);
+                String adduserlevel = res.getString("userlevel");
+                userlevel.setSelectedItem(adduserlevel);
                 
-                    String addposition = res.getString("Position");
-                    position.setSelectedItem(addposition);
+                String addposition = res.getString("Position");
+                position.setSelectedItem(addposition);
                 
-                    String addname=res.getString("Fname");
-                    name.setText(addname);
+                String addname=res.getString("Fname");
+                name.setText(addname);
                 
-                    String addsur = res.getString("Lname");
-                    surname.setText(addsur);
+                String addsur = res.getString("Lname");
+                surname.setText(addsur);
                 
-                    String adde = res.getString("Email");
-                    email.setText(adde);
+                String adde = res.getString("Email");
+                email.setText(adde);
                 
-                    String adddate=res.getString("DateOfBirth");
-                    dateofB.setText(adddate);
+                String adddate=res.getString("DateOfBirth");
+                dateofB.setText(adddate);
                 
-                    String addgen = res.getString("gender");
-                    genre.setText(addgen);
+                String addgen = res.getString("gender");
+                genre.setText(addgen);
                 
-                    String addcon = res.getString("Tel");
-                    tel.setText(addcon);
+                String addcon = res.getString("Tel");
+                tel.setText(addcon);
                 
-                    String addbase = res.getString("BaseSalary");
-                    basesalary.setText(addbase);
+                String addbase = res.getString("BaseSalary");
+                basesalary.setText(addbase);
                 
-                    String addjob = res.getString("Jobtitle");
-                    jobtitle.setText(addjob);
-                }              
-            } 
-            catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+                String addjob = res.getString("Jobtitle");
+                jobtitle.setText(addjob);
             }
-            finally{
-                try {
-                    res.close();
-                    pre.close();
-                } catch (Exception e) {
-                }
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        finally{
+            try {
+                res.close();
+                pre.close();
+            } catch (Exception e) {
             }
+        }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -410,32 +407,32 @@ public class searchemp extends javax.swing.JFrame {
             try {
                 
                 Date date = GregorianCalendar
-                               .getInstance().getTime();
-            DateFormat format = DateFormat.getDateInstance();
-            String dateE = format.format(date);
-            Date d= new Date();
-            SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
-            String timeSt = time.format(d);
-                       
-            String auditdate=dateE;
-            String audittime=timeSt;
-            String statusC= "Update Records";
-            String eid=connection.Emp.username;
-                       
-            try {
-                            
-                String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
-                       
-                pre=connects.prepareStatement(sqlogin);
-                pre.execute();
-                            //this.dispose();
-                           
-            } catch (Exception e) {
+                        .getInstance().getTime();
+                DateFormat format = DateFormat.getDateInstance();
+                String dateE = format.format(date);
+                Date d= new Date();
+                SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
+                String timeSt = time.format(d);
                 
-            }
+                String auditdate=dateE;
+                String audittime=timeSt;
+                String statusC= "Update Records";
+                String eid=connection.Emp.username;
+                
+                try {
+                    
+                    String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                    
+                    pre=connects.prepareStatement(sqlogin);
+                    pre.execute();
+                    //this.dispose();
+                    
+                } catch (Exception e) {
+                    
+                }
                 
             } catch (Exception e) {
-               JOptionPane.showMessageDialog(null,"Record Updated"); 
+                JOptionPane.showMessageDialog(null,"Record Updated");
             }
             
             String sqr = "delete from mydb.emp_detail where username=? ";

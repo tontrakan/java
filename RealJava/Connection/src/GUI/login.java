@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package GUI;
 
 import connection.connect;
@@ -25,14 +25,14 @@ public class login extends javax.swing.JFrame {
     ResultSet res = null;
     PreparedStatement pre = null;
     //username.setDocument(new Extendtion.limitfield(12));
-
-   
+    
+    
     public login() {
         initComponents();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
-        setLocation(size.width/2 - getWidth()/2, 
-        size.height/2 - getHeight()/2);
+        setLocation(size.width/2 - getWidth()/2,
+                size.height/2 - getHeight()/2);
         date();
         //username.setDocument(new Extendtion.limitfield(12));
         
@@ -45,9 +45,9 @@ public class login extends javax.swing.JFrame {
         int year = cal.get(Calendar.YEAR);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         
-        txt_date.setText((month+1)+"/"+day+"/"+year);       
+        txt_date.setText((month+1)+"/"+day+"/"+year);
     }
-
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -62,7 +62,6 @@ public class login extends javax.swing.JFrame {
         password = new javax.swing.JPasswordField();
         selectlevel = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         Menu = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         txt_date = new javax.swing.JMenu();
@@ -75,6 +74,8 @@ public class login extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        jPanel2.setMaximumSize(new java.awt.Dimension(400, 260));
+        jPanel2.setPreferredSize(new java.awt.Dimension(400, 240));
         jPanel2.setLayout(null);
 
         cmd_Login.setText("Login");
@@ -89,7 +90,7 @@ public class login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(cmd_Login);
-        cmd_Login.setBounds(80, 190, 110, 40);
+        cmd_Login.setBounds(160, 190, 110, 40);
 
         jLabel1.setText("Username:");
         jPanel2.add(jLabel1);
@@ -137,10 +138,6 @@ public class login extends javax.swing.JFrame {
         jPanel2.add(jLabel3);
         jLabel3.setBounds(60, 160, 110, 18);
 
-        jButton1.setText("Register");
-        jPanel2.add(jButton1);
-        jButton1.setBounds(210, 190, 110, 40);
-
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 400, 260);
 
@@ -166,13 +163,13 @@ public class login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void ctrlQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctrlQActionPerformed
         System.exit(0);
     }//GEN-LAST:event_ctrlQActionPerformed
-
+    
     private void cmd_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_LoginActionPerformed
-            
+        
         if(username.getText().equals("")){
             JOptionPane.showMessageDialog(null, "username must not empty");
         }
@@ -182,7 +179,7 @@ public class login extends javax.swing.JFrame {
         else{
             String sql = "select username,password,userLevel from mydb.emp where  username=? and password=? and userLevel=?  ";
             try {
-                int count =0; 
+                int count =0;
                 pre=connects.prepareStatement(sql);
                 pre.setString(1, username.getText());
                 pre.setString(2, password.getText());
@@ -197,228 +194,212 @@ public class login extends javax.swing.JFrame {
                 String access=(selectlevel.getSelectedItem().toString());
                 if(access=="Admin"){
                     if(count==1){
-                        
                         //if(username.getText().equals(res.getString(1))){System.out.println("reapeat");}
                         JOptionPane.showMessageDialog(null, "success");
-                       MainMenu main = new MainMenu();
-                       main.setVisible(true);
-                       Date date = GregorianCalendar
-                               .getInstance().getTime();
-                       DateFormat format = DateFormat.getDateInstance();
-                       String dateE = format.format(date);
-                       Date d= new Date();
-                       SimpleDateFormat time = 
-                               new SimpleDateFormat("HH:mm:ss");
-                       String timeSt = time.format(d);
-                       
-                       String auditdate=dateE;
-                       String audittime=timeSt;
-                       String statusC= "login";
-                       String eid=connection.Emp.username;
-                       String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
-                       
-                       pre=connects.prepareStatement(sqlogin);
-                       pre.execute();
-                       this.dispose();
+                        MainMenu main = new MainMenu();
+                        main.setVisible(true);
+                        Date date = GregorianCalendar
+                                .getInstance().getTime();
+                        DateFormat format = DateFormat.getDateInstance();
+                        String dateE = format.format(date);
+                        Date d= new Date();
+                        SimpleDateFormat time =
+                                new SimpleDateFormat("HH:mm:ss");
+                        String timeSt = time.format(d);
+                        
+                        String auditdate=dateE;
+                        String audittime=timeSt;
+                        String statusC= "login";
+                        String eid=connection.Emp.username;
+                        String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                        
+                        pre=connects.prepareStatement(sqlogin);
+                        pre.execute();
+                        this.dispose();
                     }
                     else if(count>1){
-                       JOptionPane.showMessageDialog(null,"Duplicate Username "
-                               + "or Password Access denied" );
-                       
-                   }
-                   else{
-                       JOptionPane.showMessageDialog(null,
-                       "Username and Password is not correct");
-                   }  
+                        JOptionPane.showMessageDialog(null,"Duplicate Username "
+                                + "or Password Access denied" );
+                        
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null,
+                                "Username and Password is not correct");
+                    }
                 }
-                else if (access=="user"){
+                else if (access=="User"){
                     if(count==1){
                         JOptionPane.showMessageDialog(null, "success");
-                       MainMenuUser main = new MainMenuUser();
-                       main.setVisible(true);
-                       Date date = GregorianCalendar
-                               .getInstance().getTime();
-                       DateFormat format = DateFormat.getDateInstance();
-                       String dateE = format.format(date);
-                       Date d= new Date();
-                       SimpleDateFormat time = 
-                               new SimpleDateFormat("HH:mm:ss");
-                       String timeSt = time.format(d);
-                       
-                       String auditdate=dateE;
-                       String audittime=timeSt;
-                       String statusC= "login";
-                       String eid=connection.Emp.username;
-                       String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
-                       
-                       pre=connects.prepareStatement(sqlogin);
-                       pre.execute();
-                       //this.dispose();
+                        MainMenuUser user = new MainMenuUser();
+                        user.setVisible(true);
+                        Date date = GregorianCalendar
+                                .getInstance().getTime();
+                        DateFormat format = DateFormat.getDateInstance();
+                        String dateE = format.format(date);
+                        Date d= new Date();
+                        SimpleDateFormat time =
+                                new SimpleDateFormat("HH:mm:ss");
+                        String timeSt = time.format(d);
+                        
+                        String auditdate=dateE;
+                        String audittime=timeSt;
+                        String statusC= "login";
+                        String eid=connection.Emp.username;
+                        String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                        
+                        pre=connects.prepareStatement(sqlogin);
+                        pre.execute();
+                        //this.dispose();
                     }
-                    
                     else{
-                       JOptionPane.showMessageDialog(null,
-                       "Username or Password or Leveluser is not correct");
-                       login log = new login();
-                       log.setVisible(true);
-                       
-                   }
-                    
+                        JOptionPane.showMessageDialog(null,
+                                "Username or Password or Leveluser is not correct");
+                    }
                 }
-                
-                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
             finally {
-            
-            try{
-                res.close();
-                pre.close(); 
-                setVisible(false);
+                try{
+                    res.close();
+                    pre.close();
+                    setVisible(false);
+                }
+                catch(Exception e){
+                }
             }
-            catch(Exception e){               
-            }
-          } 
         }
         
     }//GEN-LAST:event_cmd_LoginActionPerformed
-
+    
     private void cmd_LoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmd_LoginKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmd_LoginKeyPressed
-
+    
     private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
         
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             if(username.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "username must not empty");
-        }
-        else if(password.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "password must not empty");
-        }
-        else{
-            String sql = "select username,password,userLevel from mydb.emp where  username=? and password=? and userLevel=?  ";
-            try {
-                int count =0; 
-                pre=connects.prepareStatement(sql);
-                pre.setString(1, username.getText());
-                pre.setString(2, password.getText());
-                pre.setString(3, selectlevel.getSelectedItem().toString());
-                res=pre.executeQuery();
-                
-                while(res.next()){
-                    String user = res.getString(1);
-                    connection.Emp.username=user;
-                    count=count+1;
-                }
-                String access=(selectlevel.getSelectedItem().toString());
-                if(access=="Admin"){
-                    if(count==1){
-                        JOptionPane.showMessageDialog(null, "success");
-                       MainMenu main = new MainMenu();
-                       main.setVisible(true);
-                       Date date = GregorianCalendar
-                               .getInstance().getTime();
-                       DateFormat format = DateFormat.getDateInstance();
-                       String dateE = format.format(date);
-                       Date d= new Date();
-                       SimpleDateFormat time = 
-                               new SimpleDateFormat("HH:mm:ss");
-                       String timeSt = time.format(d);
-                       
-                       String auditdate=dateE;
-                       String audittime=timeSt;
-                       String statusC= "login";
-                       String eid=connection.Emp.username;
-                       String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
-                       
-                       pre=connects.prepareStatement(sqlogin);
-                       pre.execute();
-                       this.dispose();
-                    }
-                    else if(count>1){
-                       JOptionPane.showMessageDialog(null,"Duplicate Username "
-                               + "or Password Access denied" );
-                       
-                   }
-                   else{
-                       JOptionPane.showMessageDialog(null,
-                       "Username and Password is not correct");
-                   }  
-                }
-                else if (access=="user"){
-                    if(count==1){
-                        JOptionPane.showMessageDialog(null, "success");
-                       MainMenuUser main = new MainMenuUser();
-                       main.setVisible(true);
-                       Date date = GregorianCalendar
-                               .getInstance().getTime();
-                       DateFormat format = DateFormat.getDateInstance();
-                       String dateE = format.format(date);
-                       Date d= new Date();
-                       SimpleDateFormat time = 
-                               new SimpleDateFormat("HH:mm:ss");
-                       String timeSt = time.format(d);
-                       
-                       String auditdate=dateE;
-                       String audittime=timeSt;
-                       String statusC= "login";
-                       String eid=connection.Emp.username;
-                       String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
-                       
-                       pre=connects.prepareStatement(sqlogin);
-                       pre.execute();
-                       this.dispose();
-                    }
+                JOptionPane.showMessageDialog(null, "username must not empty");
+            }
+            else if(password.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "password must not empty");
+            }
+            else{
+                String sql = "select username,password,userLevel from mydb.emp where  username=? and password=? and userLevel=?  ";
+                try {
+                    int count =0;
+                    pre=connects.prepareStatement(sql);
+                    pre.setString(1, username.getText());
+                    pre.setString(2, password.getText());
+                    pre.setString(3, selectlevel.getSelectedItem().toString());
+                    res=pre.executeQuery();
                     
-                    else{
-                       JOptionPane.showMessageDialog(null,                     
-                       "Username or Password or Leveluser is not correct");
-                       login log = new login();
-                       log.setVisible(true);
-                   }
-                    
+                    while(res.next()){
+                        String user = res.getString(1);
+                        connection.Emp.username=user;
+                        count=count+1;
+                    }
+                    String access=(selectlevel.getSelectedItem().toString());
+                    if(access=="Admin"){
+                        if(count==1){
+                            JOptionPane.showMessageDialog(null, "success");
+                            MainMenu main = new MainMenu();
+                            main.setVisible(true);
+                            Date date = GregorianCalendar
+                                    .getInstance().getTime();
+                            DateFormat format = DateFormat.getDateInstance();
+                            String dateE = format.format(date);
+                            Date d= new Date();
+                            SimpleDateFormat time =
+                                    new SimpleDateFormat("HH:mm:ss");
+                            String timeSt = time.format(d);
+                            
+                            String auditdate=dateE;
+                            String audittime=timeSt;
+                            String statusC= "login";
+                            String eid=connection.Emp.username;
+                            String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                            
+                            pre=connects.prepareStatement(sqlogin);
+                            pre.execute();
+                            this.dispose();
+                        }
+                        else if(count>1){
+                            JOptionPane.showMessageDialog(null,"Duplicate Username "
+                                    + "or Password Access denied" );
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null,
+                                    "Username and Password is not correct");
+                            //JOptionPane.showConfirmDialog(Menu, i)
+                        }
+                    }
+                    else if (access=="User"){
+                        if(count==1){
+                            JOptionPane.showMessageDialog(null, "success");
+                            MainMenuUser main = new MainMenuUser();
+                            main.setVisible(true);
+                            Date date = GregorianCalendar
+                                    .getInstance().getTime();
+                            DateFormat format = DateFormat.getDateInstance();
+                            String dateE = format.format(date);
+                            Date d= new Date();
+                            SimpleDateFormat time =
+                                    new SimpleDateFormat("HH:mm:ss");
+                            String timeSt = time.format(d);
+                            
+                            String auditdate=dateE;
+                            String audittime=timeSt;
+                            String statusC= "login";
+                            String eid=connection.Emp.username;
+                            String sqlogin="insert into mydb.audit (userlogin,date,time,status) values ('"+eid+"','"+auditdate+"','"+audittime+"','"+statusC+"')";
+                            
+                            pre=connects.prepareStatement(sqlogin);
+                            pre.execute();
+                            this.dispose();
+                        }
+                        
+                        else{
+                            JOptionPane.showMessageDialog(null,
+                                    "Username or Password or Leveluser is not correct");
+                        }
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
                 }
-                
-                
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+                finally {
+                    
+                    try{
+                        res.close();
+                        pre.close();
+                        setVisible(false);
+                    }
+                    catch(Exception e){
+                    }
+                }
             }
-            finally {
-            
-            try{
-                res.close();
-                pre.close(); 
-                setVisible(false);
-            }
-            catch(Exception e){               
-            }
-          } 
-        } 
-         }
-        
-        
+        }
     }//GEN-LAST:event_passwordKeyPressed
-
+    
     private void selectlevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectlevelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_selectlevelActionPerformed
-
+    
     private void usernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyReleased
         if(username.getText().length()>=20){
-            JOptionPane.showMessageDialog(null, "can input for 20 character");
+            JOptionPane.showMessageDialog(null, "can input only 20 character");
             username.setText("");
         }
     }//GEN-LAST:event_usernameKeyReleased
-
+    
     private void passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyReleased
         if(password.getText().length()>=20){
-            JOptionPane.showMessageDialog(null, "can input for 20 character");
+            JOptionPane.showMessageDialog(null, "can input only 20 character");
             password.setText("");
         }
     }//GEN-LAST:event_passwordKeyReleased
-
+    
     /**
      * @param args the command line arguments
      */
@@ -426,8 +407,8 @@ public class login extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -445,7 +426,7 @@ public class login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -453,13 +434,12 @@ public class login extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
     private javax.swing.JButton cmd_Login;
     private javax.swing.JMenu command;
     private javax.swing.JMenuItem ctrlQ;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

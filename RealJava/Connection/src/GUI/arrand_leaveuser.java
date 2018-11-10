@@ -17,20 +17,20 @@ import javax.swing.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-public class sick_leave extends javax.swing.JFrame {
+public class arrand_leaveuser extends javax.swing.JFrame {
 
     connection.connect connect = new connection.connect();
     Connection connects = connect.get_Connections();
     ResultSet res = null;
     PreparedStatement pre = null;
-    public sick_leave() {
+    public arrand_leaveuser() {
         initComponents();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, 
         size.height/2 - getHeight()/2);
-        
         emp.setText(String.valueOf(connection.Emp.username).toString());
+        
     }
 
     /**
@@ -57,13 +57,11 @@ public class sick_leave extends javax.swing.JFrame {
         e1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         emp = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(500, 310));
         setMinimumSize(new java.awt.Dimension(500, 310));
-        setPreferredSize(new java.awt.Dimension(500, 310));
         getContentPane().setLayout(null);
 
         jLabel1.setText("number of day leave");
@@ -82,9 +80,9 @@ public class sick_leave extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(40, 160, 120, 18);
 
-        jLabel5.setText("Sick Leave");
+        jLabel5.setText("Arrand Leave");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(210, 30, 80, 18);
+        jLabel5.setBounds(210, 30, 110, 18);
         getContentPane().add(detail);
         detail.setBounds(210, 70, 240, 30);
 
@@ -133,46 +131,48 @@ public class sick_leave extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2);
         jButton2.setBounds(120, 240, 110, 36);
+        getContentPane().add(emp);
+        emp.setBounds(80, 0, 80, 20);
 
         jLabel6.setText("loggin As:");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(0, 0, 70, 18);
-        getContentPane().add(emp);
-        emp.setBounds(80, 0, 80, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MainMenu main = new MainMenu();
-        main.setVisible(true);
-        setVisible(false);                     
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       
         if(detail.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"field can not empty");
+           JOptionPane.showMessageDialog(null,"field can not empty"); 
         }
         else{
             int p = JOptionPane.showConfirmDialog(null, "Are you sure you want to Send?","Send Teh Leave",JOptionPane.YES_NO_OPTION);
-            if(p==0){
-                try {
-                    String datestart = s1.getSelectedItem().toString()+s2.getSelectedItem().toString()+s3.getSelectedItem().toString();
-                    String dateend = e1.getSelectedItem().toString()+e2.getSelectedItem().toString()+e3.getSelectedItem().toString();
-                    String amount = a1.getSelectedItem().toString();
-                    String Ldetail = detail.getText();
-                    String user = connection.Emp.username.toString();
-                    
-                    String sql = "insert into mydb.sick_leave (leavestartdate,leaveenddate,leaveamount,matenity_detail,username) values ('"+datestart+"','"+dateend+"','"+amount+"','"+Ldetail+"','"+user+"')";
-                    pre=connects.prepareStatement(sql);
-                    pre.execute();
-                    JOptionPane.showMessageDialog(null,"send the leave to server and wait for reply from your boss");
-                    
-                } catch (Exception e) {
-                }
+        if(p==0){
+            try {
+                String datestart = s1.getSelectedItem().toString()+s2.getSelectedItem().toString()+s3.getSelectedItem().toString();
+                String dateend = e1.getSelectedItem().toString()+e2.getSelectedItem().toString()+e3.getSelectedItem().toString();
+                String amount = a1.getSelectedItem().toString();
+                String Ldetail = detail.getText();
+                String user = connection.Emp.username.toString();
+                
+                String sql = "insert into mydb.errand_leave (leavestartdate,leaveenddate,leaveamount,matenity_detail,username) values ('"+datestart+"','"+dateend+"','"+amount+"','"+Ldetail+"','"+user+"')";
+                pre=connects.prepareStatement(sql);
+                pre.execute();
+                JOptionPane.showMessageDialog(null,"send the leave to server and wait for reply from your boss");
+                
+            } catch (Exception e) {
             }
         }
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MainMenuUser user = new MainMenuUser();
+        user.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,13 +191,13 @@ public class sick_leave extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(arrand_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(arrand_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(arrand_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(arrand_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -205,8 +205,8 @@ public class sick_leave extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sick_leave().setVisible(true);
-            }
+                new arrand_leaveuser().setVisible(true);
+  }
         });
     }
 

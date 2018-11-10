@@ -17,20 +17,20 @@ import javax.swing.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-public class sick_leave extends javax.swing.JFrame {
+public class matenity_leaveuser extends javax.swing.JFrame {
 
     connection.connect connect = new connection.connect();
     Connection connects = connect.get_Connections();
     ResultSet res = null;
     PreparedStatement pre = null;
-    public sick_leave() {
+    public matenity_leaveuser() {
         initComponents();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2 - getWidth()/2, 
         size.height/2 - getHeight()/2);
         
-        emp.setText(String.valueOf(connection.Emp.username).toString());
+         emp.setText(String.valueOf(connection.Emp.username).toString());
     }
 
     /**
@@ -48,9 +48,9 @@ public class sick_leave extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         detail = new javax.swing.JTextField();
-        s3 = new javax.swing.JComboBox<>();
         s1 = new javax.swing.JComboBox<>();
         s2 = new javax.swing.JComboBox<>();
+        s3 = new javax.swing.JComboBox<>();
         a1 = new javax.swing.JComboBox<>();
         e2 = new javax.swing.JComboBox<>();
         e3 = new javax.swing.JComboBox<>();
@@ -61,9 +61,7 @@ public class sick_leave extends javax.swing.JFrame {
         emp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(500, 310));
         setMinimumSize(new java.awt.Dimension(500, 310));
-        setPreferredSize(new java.awt.Dimension(500, 310));
         getContentPane().setLayout(null);
 
         jLabel1.setText("number of day leave");
@@ -82,15 +80,11 @@ public class sick_leave extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(40, 160, 120, 18);
 
-        jLabel5.setText("Sick Leave");
+        jLabel5.setText("Maternity Leave");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(210, 30, 80, 18);
+        jLabel5.setBounds(180, 30, 130, 18);
         getContentPane().add(detail);
         detail.setBounds(210, 70, 240, 30);
-
-        s3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2561", "2562", " " }));
-        getContentPane().add(s3);
-        s3.setBounds(350, 110, 100, 30);
 
         s1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", " " }));
         getContentPane().add(s1);
@@ -99,6 +93,10 @@ public class sick_leave extends javax.swing.JFrame {
         s2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         getContentPane().add(s2);
         s2.setBounds(280, 110, 70, 30);
+
+        s3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2561", "2562", " " }));
+        getContentPane().add(s3);
+        s3.setBounds(350, 110, 100, 30);
 
         a1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", " " }));
         getContentPane().add(a1);
@@ -143,36 +141,33 @@ public class sick_leave extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MainMenu main = new MainMenu();
-        main.setVisible(true);
-        setVisible(false);                     
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(detail.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"field can not empty");
-        }
-        else{
-            int p = JOptionPane.showConfirmDialog(null, "Are you sure you want to Send?","Send Teh Leave",JOptionPane.YES_NO_OPTION);
-            if(p==0){
-                try {
-                    String datestart = s1.getSelectedItem().toString()+s2.getSelectedItem().toString()+s3.getSelectedItem().toString();
-                    String dateend = e1.getSelectedItem().toString()+e2.getSelectedItem().toString()+e3.getSelectedItem().toString();
-                    String amount = a1.getSelectedItem().toString();
-                    String Ldetail = detail.getText();
-                    String user = connection.Emp.username.toString();
-                    
-                    String sql = "insert into mydb.sick_leave (leavestartdate,leaveenddate,leaveamount,matenity_detail,username) values ('"+datestart+"','"+dateend+"','"+amount+"','"+Ldetail+"','"+user+"')";
-                    pre=connects.prepareStatement(sql);
-                    pre.execute();
-                    JOptionPane.showMessageDialog(null,"send the leave to server and wait for reply from your boss");
-                    
-                } catch (Exception e) {
-                }
+        
+        int p = JOptionPane.showConfirmDialog(null, "Are you sure you want to Send?","Send Teh Leave",JOptionPane.YES_NO_OPTION);
+        if(p==0){
+            try {
+                String datestart = s1.getSelectedItem().toString()+s2.getSelectedItem().toString()+s3.getSelectedItem().toString();
+                String dateend = e1.getSelectedItem().toString()+e2.getSelectedItem().toString()+e3.getSelectedItem().toString();
+                String amount = a1.getSelectedItem().toString();
+                String Ldetail = detail.getText();
+                String user = connection.Emp.username.toString();
+                
+                String sql = "insert into mydb.matenity_leave (leavestartdate,leaveenddate,leaveamount,matenity_detail,username) values ('"+datestart+"','"+dateend+"','"+amount+"','"+Ldetail+"','"+user+"')";
+                pre=connects.prepareStatement(sql);
+                pre.execute();
+                JOptionPane.showMessageDialog(null,"send the leave to server and wait for reply from your boss");
+                
+            } catch (Exception e) {
             }
         }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MainMenuUser user = new MainMenuUser();
+        user.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,13 +186,13 @@ public class sick_leave extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(matenity_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(matenity_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(matenity_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(sick_leave.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(matenity_leaveuser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -205,7 +200,7 @@ public class sick_leave extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new sick_leave().setVisible(true);
+                new matenity_leaveuser().setVisible(true);
             }
         });
     }
