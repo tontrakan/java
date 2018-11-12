@@ -35,6 +35,7 @@ public class connect {
             con=DriverManager.getConnection
             ("jdbc:mysql://localhost:3306/mydb","root","k41i");
             
+            
         } catch (Exception e) {
             System.out.println(e);
         }
