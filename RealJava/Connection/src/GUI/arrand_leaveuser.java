@@ -59,9 +59,13 @@ public class arrand_leaveuser extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         emp = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(500, 310));
+        setMaximumSize(new java.awt.Dimension(500, 330));
+        setMinimumSize(new java.awt.Dimension(500, 330));
+        setPreferredSize(new java.awt.Dimension(500, 330));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setText("number of day leave");
@@ -121,7 +125,7 @@ public class arrand_leaveuser extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(250, 240, 110, 36);
+        jButton1.setBounds(330, 240, 140, 36);
 
         jButton2.setText("send");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -130,13 +134,17 @@ public class arrand_leaveuser extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(120, 240, 110, 36);
+        jButton2.setBounds(180, 240, 140, 36);
         getContentPane().add(emp);
-        emp.setBounds(80, 0, 80, 20);
+        emp.setBounds(90, 10, 80, 20);
 
         jLabel6.setText("loggin As:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 0, 70, 18);
+        jLabel6.setBounds(10, 10, 70, 18);
+
+        jButton3.setText("generate report");
+        getContentPane().add(jButton3);
+        jButton3.setBounds(30, 240, 140, 36);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -219,6 +227,7 @@ public class arrand_leaveuser extends javax.swing.JFrame {
     private javax.swing.JLabel emp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

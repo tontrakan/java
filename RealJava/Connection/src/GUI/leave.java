@@ -48,7 +48,6 @@ public class leave extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         emp = new javax.swing.JLabel();
-        viewL = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(520, 430));
@@ -63,7 +62,7 @@ public class leave extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(70, 200, 280, 60);
+        jButton1.setBounds(130, 210, 280, 60);
 
         jButton2.setText("Sick Leave");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +71,7 @@ public class leave extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(70, 40, 280, 60);
+        jButton2.setBounds(130, 50, 280, 60);
 
         jButton3.setText("Arrand Leave");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +80,7 @@ public class leave extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(70, 120, 280, 60);
+        jButton3.setBounds(130, 130, 280, 60);
 
         jButton4.setText("exit to menu");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -90,22 +89,13 @@ public class leave extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(380, 330, 110, 50);
+        jButton4.setBounds(210, 290, 110, 50);
 
         jLabel6.setText("loggin As:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 0, 70, 18);
+        jLabel6.setBounds(10, 10, 70, 18);
         getContentPane().add(emp);
-        emp.setBounds(80, 0, 80, 20);
-
-        viewL.setText("View Leaves");
-        viewL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewLActionPerformed(evt);
-            }
-        });
-        getContentPane().add(viewL);
-        viewL.setBounds(70, 280, 280, 60);
+        emp.setBounds(90, 10, 80, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -133,12 +123,6 @@ public class leave extends javax.swing.JFrame {
         main.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void viewLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewLActionPerformed
-        viewLeaves viewL = new viewLeaves();
-        viewL.setVisible(true);
-        setVisible(false);
-    }//GEN-LAST:event_viewLActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +166,5 @@ public class leave extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JButton viewL;
     // End of variables declaration//GEN-END:variables
 }
