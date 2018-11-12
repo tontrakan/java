@@ -94,11 +94,11 @@ public class login extends javax.swing.JFrame {
 
         jLabel1.setText("Username:");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(80, 80, 90, 18);
+        jLabel1.setBounds(80, 80, 90, 14);
 
         jLabel2.setText("Password:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(80, 120, 80, 18);
+        jLabel2.setBounds(80, 120, 80, 14);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Please enter your username and password");
@@ -136,7 +136,7 @@ public class login extends javax.swing.JFrame {
 
         jLabel3.setText("Select Position:");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(60, 160, 110, 18);
+        jLabel3.setBounds(60, 160, 110, 14);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 400, 260);

@@ -33,7 +33,7 @@ public class connect {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection
-            ("jdbc:mysql://localhost:3306/mydb","root","xcalculusx");
+            ("jdbc:mysql://localhost:3306/mydb","root","k41i");
             
         } catch (Exception e) {
             System.out.println(e);
